@@ -12,9 +12,7 @@ public class AzureKeyVaultService
         _configuration = configuration;
         var credential = new DefaultAzureCredential();
         string? keyVaultUrl = _configuration.GetSection("AppSettings").GetSection("Keyvault_URL").Value;
-        _secretClient = new SecretClient(new Uri(keyVaultUrl), credential);
-        _configuration = configuration;
-
+        _secretClient = new SecretClient(new Uri(keyVaultUrl!), credential);
     }
 
     public async Task<string?> GetSecret(string secretName)
