@@ -37,8 +37,19 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}       <tr>
-            <td>KeyVault Test @Html.DisplayFor(modelItem => Model.SecretValue)</td>
-        </tr>
+}
     </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Test KeyVault With FIC\STS Auth Flow
+            </th>
+        <tr>
+            <td>KeyVault Test: @Html.DisplayFor(modelItem => Model.SecretValue)</td>
+        </tr>
+    </thead>
+    <tbody>
 </table>
