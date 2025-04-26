@@ -10,7 +10,11 @@ public class AzureKeyVaultService
     public AzureKeyVaultService(IConfiguration configuration)
     {
         _configuration = configuration;
-        var credential = new DefaultAzureCredential();
+        var credential = new DefaultAzureCredential(
+            new DefaultAzureCredentialOptions
+            {
+                ManagedIdentityClientId = builder.Configuration.GetSection("AppSettings").GetSection("AZURE_CLIENT_ID").Value
+            });
         string? keyVaultUrl = _configuration.GetSection("AppSettings").GetSection("Keyvault_URL").Value;
         _secretClient = new SecretClient(new Uri(keyVaultUrl!), credential);
     }
